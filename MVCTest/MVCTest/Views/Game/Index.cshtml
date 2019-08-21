@@ -1,0 +1,148 @@
+﻿@model GameModel;
+@{
+    ViewData["Title"] = "Home";
+}
+
+    <div class="text-center">
+        <div>Welcome to the Tic, Tac, Toe Game!</div>
+        <br>
+        <div class="button" id="upperRow">
+
+            <div style="height: 20px; display:inline">
+
+                @if (Model.Board[0, 0] == "7")
+                {
+                    @Html.ActionLink("", "Move", "Game", new { choice = 7 }, new { @class = "btn btn-info", @style = "height: 35px; width: 35px" })
+                }
+                else
+                {
+                    @Html.Label(@Model.Board[0, 0], @Model.Board[0, 0], new { @class = "btn btn-info", @style = "height: 35px; width: 35px" })
+                }
+
+            </div>
+
+
+            <div style="height: 20px; display:inline">
+
+                @if (Model.Board[1, 0] == "8")
+                {
+                    @Html.ActionLink(" ", "Move", "Game", new { choice = 8 }, new { @class = "btn btn-info", @style = "height: 35px; width: 35px"  })
+                }
+                else
+                {
+                    @Html.Label(@Model.Board[1, 0], @Model.Board[1, 0], new { @class = "btn btn-info", @style = "height: 35px; width: 35px" })
+
+                }
+
+            </div>
+
+            <div style="height: 20px; display:inline">
+
+                @if (Model.Board[2, 0] == "9")
+                {
+                    @Html.ActionLink(" ", "Move", "Game", new { choice = 9 }, new { @class = "btn btn-info", @style = "height: 35px; width: 35px"  })
+                }
+                else
+                {
+                    @Html.Label(@Model.Board[2, 0], @Model.Board[2, 0], new { @class = "btn btn-info", @style = "height: 35px; width: 35px" })
+                }
+
+            </div>
+
+        </div>
+
+            <br>
+
+            <div class="button" id="middleRow">
+
+                <div style="height: 20px; display:inline">
+
+                    @if (Model.Board[0, 1] == "4")
+                    {
+                        @Html.ActionLink(" ", "Move", "Game", new { choice = 4 }, new { @class = "btn btn-info", @style = "height: 35px; width: 35px"  })
+                    }
+                    else
+                    {
+                        @Html.Label(@Model.Board[0, 1], @Model.Board[0, 1], new { @class = "btn btn-info", @style = "height: 35px; width: 35px" })
+                    }
+
+                </div>
+
+                <div style="height: 20px; display:inline">
+                    @if (Model.Board[1, 1] == "5")
+                    {
+                        @Html.ActionLink(" ", "Move", "Game", new { choice = 5 }, new { @class = "btn btn-info", @style = "height: 35px; width: 35px"  })
+                    }
+                    else
+                    {
+                        @Html.Label(@Model.Board[1, 1], @Model.Board[1, 1], new { @class = "btn btn-info", @style = "height: 35px; width: 35px" })
+                    }
+                </div>
+
+                <div style="height: 20px; display:inline">
+
+                    @if (Model.Board[2, 1] == "6")
+                    {
+                        @Html.ActionLink(" ", "Move", "Game", new { choice = 6 }, new { @class = "btn btn-info", @style = "height: 35px; width: 35px"  })
+                    }
+                    else
+                    {
+                        @Html.Label(@Model.Board[2, 1], @Model.Board[2, 1], new { @class = "btn btn-info", @style = "height: 35px; width: 35px" })
+                    }
+                </div>
+            </div>
+
+                <br>
+
+            <div class="button" id="lowerRow">
+
+                <div style="height: 20px; display:inline">
+
+                   @if (Model.Board[0, 2] == "1")
+                   {
+                       @Html.ActionLink(" ", "Move", "Game", new { choice = 1 }, new { @class = "btn btn-info", @style = "height: 35px; width: 35px"  })
+                   }
+                    else
+                    {
+                       @Html.Label(@Model.Board[0, 2], @Model.Board[0, 2], new { @class = "btn btn-info", @style = "height: 35px; width: 35px" })
+                    }
+
+                </div>
+
+                <div style="height: 20px; display:inline">
+
+                   @if (Model.Board[1, 2] == "2")
+                   {
+                       @Html.ActionLink(" ", "Move", "Game", new { choice = 2 }, new { @class = "btn btn-info", @style = "height: 35px; width: 35px"  })
+                   }
+                    else
+                    {
+                       @Html.Label(@Model.Board[1, 2], @Model.Board[1, 2], new { @class = "btn btn-info", @style = "height: 35px; width: 35px" })
+                    }
+                </div>
+
+                <div style="height: 20px; display:inline">
+
+                   @if (Model.Board[2, 2] == "3")
+                   {
+                       @Html.ActionLink(" ", "Move", "Game", new { choice = 3 }, new { @class = "btn btn-info", @style = "height: 35px; width: 35px"  })
+                   }
+                    else
+                    {
+                       @Html.Label(@Model.Board[2, 2], @Model.Board[2, 2], new { @class = "btn btn-info", @style = "height: 35px; width: 35px" })
+                    }
+                    </div>
+            </div>
+
+        <div>@Html.ActionLink("Reset Game", "ResetGame", "Game")</div>
+
+        @if (Model.winner != null)
+        {
+         <p>Winner is: @Model.winner</p>
+
+        }
+         else if (Model.winner == null && Model.Turns == 9)
+         {
+            <p>Tie!</p>
+         }
+    </div>

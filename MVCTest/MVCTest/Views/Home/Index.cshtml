@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}  
+
+    <div class="text-center">
+        <h1>Welcome to TicTacToe!</h1>
+        <h2>To start game click on the button!</h2>
+
+        @Html.ActionLink("Click to Start!", "Index", "Game")
+
+        @*@Html.ActionLink(GameController.View(),
+        "Login",  // <-- Controller Name.
+        "Item" ,   // <-- ActionMethod
+        new { id=article.ArticleID }, // <-- Route arguments.
+        null  // <-- htmlArguments .. which are none. You need this value
+                      //     otherwise you call the WRONG method ...
+        //     (refer to comments, below).
+        )*@
+
+        @*<button type="button" id="startGame" onclick="window.location.href="<%= Url.Action('Index', 'Game')">Start Game!</button>*@
+    </div>
