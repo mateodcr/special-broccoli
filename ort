@@ -1,0 +1,139 @@
+Funciones al cargar la pagina.
+
+function cargarEventos(): Carga todos los eventos al iniciar la pagina.
+
+function preCarga(): Es la encargada de hacer la precarga de países, administradores, usuarios, publicaciones(publicas y privadas), contactos, likes y denuncias.
+
+Funciones de inicio de sesión
+
+function iniciarSesion(pEmail, pPass): Esta funcion recibe un email y una contraseña, busca la existencia del usuario en el array de usuarios y en el caso que exista compara si la contraseña ingresada coincide con la contraseña ingresada, de no ser asi envía los mensajes correspondientes.
+
+function cerrarSesion(): Setea la variable usuariuoLogeado a null, vacia los divs correspondienes y refresca el inicio.
+
+function mostrarDatosSesion(): Genera un div en el cual se muestran los datos de la session activa.
+
+Funciones de captura de datos desde el HTML
+
+function login(), function registro(), function obtenerDatosPublicacion(): Estas tres funciones trabajan de forma muy similar, lo que hacen es obtener los datos desde el HTML para ser usados por la función correspondiente.
+
+Funciones para el manejo de contactos
+
+function enviarSolicitudDeContacto(): Agrega un elemento al array de solicitudes enviadas del usuario que la envia, y al de solicitudes recibidas del usuario al que fue dirigida.
+
+function aceptarSolicitudDeContacto(): Agrega ambos usuarios a sus correspondientes listas de contactos, y elimina la solicitud del array de solicitudes.
+
+function rechazarSolicitudDeContacto(): Elimina la solicitud enviada y recibida de las listas.
+
+function eliminarContacto(): Elimina ambos contactos de sus respectivas listas de contactos.
+
+
+
+Funciones Buscar/Obtener
+
+function obtenerUsuarioPorEmail(pEmail): Recibe un email y recorre las listas de administradores y usuarios, luego retorna el objeto usuario correspondiente al email ingresado.
+
+function obtenerUsuarioPorId(pId): Recibe un ID y retorna el usuario correspondiente a dicho ID.
+
+function obtenerPublicacionPorId(pId): Recibe un ID y retorna la publicación con dicho ID.
+
+function buscaMeGusteada(pPublicacion): Recibe un objeto publicación y retorna true o false dependiendo si el usuario el cual esta intentando dar like no lo hizo previamente.
+
+function buscaDenuncia(pPublicacion): Recibe un objeto publicación y retorna true o false dependiendo si el usuario el cual esta intentando denunciar no lo hizo previamente.
+
+function obtenerTipoDeUsuarioLogeado(): Determina el tipo de usuario logeado para un manejo más limpio del código. Retorna 1 para usuario regular y 2 para admin.
+function obtenerBotonesDePublicacion(pPublicacion, pUsuario, pPropia): Esta función encapsula la lógica para determinar que botones mostrar en función de distintos factores.
+function obtenerNombreArchivo(pPath): Recibe el path del archivo a subir y retorna el nombre puro del archivo, desde la ultima barra en adelante.
+
+function obtenerIdNumerico(idGenerico): Recibe un id puro, extrae y devuelve el id numérico que está luego del "_" de un identificador genérico.
+function buscaElementoEnLista(pLista, pBuscado): Recibe un array y un elemento a buscar en el mismo, devuelve su posición si lo encuentra.
+function verificarContacto(pUsuario): Recibe un usuario y verifica si está en la lista de contactos del usuario logeado
+function verificarSolicitudEnviada(pUsuario): Recibe un objeto usuario y verifica si el usuario logeado ya le envío solicitud de contacto al usuario recibido
+function verificarSolicitudRecibida(pUsuario): Recibe un objeto usuario y verifica si el usuario logeado ya recibió una solicitud de contacto del usuario recibido
+Funciones de validación:
+function validarImagen(pImgNom): Recibe el nombre de una imagen y valida su extencion. Solo permite subir fotos con extencion .jpg, .png o .gif
+
+function validarPais(pPais): Verifica que el país ingresado sea un país valido de la lista.
+
+function validarCorreo(pEmail, pValidaAdmin): Verifica que el correo ingresado tenga un minimo de 5 caracteres y contenga al menos una arroba y un punto.
+
+function validarPassword(pPassword): Verifica que el correo ingresado tenga un minimo de 6 caracteres, y contenga al menos 1 mayuscula, 1 minuscula y un numero.
+
+function validarRegistro(pEmail, pNombre, pPass, pPass2, pPais, pCiudad, pFoto): Recibe un mail, un nombre, una contraseña, la repetición de la contraseña, un país, una ciudad y una foto, si todos los datos son validados correctamente, crea un nuevo usuario en la lista de usuarios.
+
+function validarPublicacion(pTitulo, pTexto, pVisibilidad, pFotoNombre): Recibe un titulo, un texto, un tipo de visibilidad y el nombre de una foto, verifica estos datos y, si son validados correctamente, genera la publicación.
+
+function validaMostrarPublicacion(pPublicacion, pUsuario, pTipoUser): Verifica las condiciones de visibilidad de la publicación para determinar quienes podrán verla en base a si es publica o privada, si el autor esta activo o no y al tipo de usuarioi logeado.
+
+function validaPublicacionPropia(pUsuario, pTipoUser): Recibe una publicación y un usuario, retorna true en el caso de que la publicación ingresada corresponda al usuario ingresado
+
+function validaInput(): Verifica que los datos ingresados sean validos en el momento de perder el foco.
+
+Funciones de alta
+
+function nuevoUsuario(pNombre, pPais, pCiudad, pEmail, pPassword, pFoto): Recibe un nombre, un país, una ciudad, un email, una contraseña y una foto. Con estos datos crea un nuevo objeto usuario en la lista de usuarios.
+
+function nuevaPublicacion(pTitulo, pTexto, pVisibilidad, pFotoNombre): Recibe un titulo, un texto, unn tipo de visibilidad y una foto. Con estos datos crea un nuevo objeto publiacion en la lista publicaciones
+
+function nuevaDenuncia()
+
+
+Funciones de Habilitacion e Inhabilitacion
+
+function desHabilitarUsuario(): Inhabilita el usuario seleccionado en la lista de usuarios. (Solo administradores)
+function habilitarUsuario(): Habilita los usuarios previamente inhabilitados en la lista. (Solo administradores)
+
+function habilitarPublicacion(): Habilita la publicación seleccionada (Usuario)
+
+function inhabilitarPublicacion(): Deshabilita la publicación seleccionada (usuario)
+
+function nuevoMeGusta(): Genera un ME GUSTA en la publicación no-propìa indicada (USUARIO)
+function quitarMeGusta(): Quita el ME GUSTA en la publicación no-propìa indicada (USUARIO)
+function dejarPublicacionPrivada(): Cambia la visibilidad de la publicación propia a Privada (USUARIO)
+function dejarPublicacionPublica(): Cambia la visibilidad de la publicación propia a Pública (USUARIO)
+function eliminarDeLaLista(pLista, pEliminado): Recibe una lista (por referencia) y un objeto a eliminar de dicha lista.
+Funciones HTML
+
+function armarHtmlLista (usuario): Arma HTML para la lista de habilitación/inhabilitación de usuarios.
+function armarHtmlMisContactos(pUsuario): Arma HTML para mostrar los contactos del usuario logeado.
+function armarHtmlRecibidos(pUsuario): Arma HTML para mostrar las solicitudes de contacto recibidas
+function armarHtmlSugerido(pUsuario): Arma HTML para mostrar las solicitudes de contacto sugeridos.
+function armarPublicacion(pPublicacion): MCabrera: Esta función recibe un usuario y una publicación de él. Determina si debe mostrarla o no.
+function botonesPublicacion(pPublicacion, pUsuario): Determina que botón cargar según la situación en publicaciones NO propias.
+function botonesPublicacionPropia(pPublicacion, pUsuario): Determina que botón cargar según la situación en publicaciones propias.
+
+Funciones que refrescan
+function refrescar(): Funcion genérica para refrescar, la misma analiza que debe refrescar en base al tipo de usuario logueado.
+
+function refrescarUI(): Refresca la UI en base al usuario logueado.
+
+function refrescarMuro(): Recorre todas las publicaciones de todos los usuarios para armar el HTML de cada publicación.
+
+function mostrarSolicitudes(): Oculta los divs visibles al momento y muestra el div en el que se encuentran las solicitudes.
+
+function mostrarContactos(): Oculta los divs visibles al momento y muestra el div en el que se encuentran los contactos.
+
+function mostrarLogin(): Oculta los divs visibles al momento y muestra el div en el que se encuentra el formulario de ingreso.
+
+function mostrarRegistro(): Oculta los divs visibles al momento y muestra el div en el que se encuentra el formulario de registro.
+
+Criterios de orden
+
+function ordenarPublicacionesDescendentePorFecha(pA, pB): Criterio para función sort() para ordenar las publicaciones en forma descendente en base a su fecha de creación.
+
+function ordenarPublicacionesDescendentePorLikes(pA, pB): Criterio para función sort() para ordenar las publicaciones en forma descendente en base a la cantidad de likes.
+
+
+
+
+Funciones Mostrar
+Las siguientes funciones están destinadas a armar el HTML correspondiente para cada caso
+
+function mostrarListaDenunciados(): Muestra usuarios con mas de 5 denuncias (ADMIN)
+function listaInhabilitados(): Muestra usuarios inhabilitados (ADMIN)
+function mostrarRankingPublicaciones(): Muestra ranking de publicaciones (ADMIN)
+function mostrarSolicitudesRecibidas(): Muestra las solicitudes recibidas (USUARIO)
+function mostrarSolicitudesSugeridas(): Muestra las solicitudes de contacto sugeridas. (USUARIO)
+function mostrarMisContactos(): Muestra lista de contactos del usuario logeado (USUARIO)
+function mostrarComboPaises(): Carga y facilita la validación del select de país en el registro. 
+
+
